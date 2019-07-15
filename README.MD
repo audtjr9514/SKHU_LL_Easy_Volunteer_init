@@ -8,21 +8,21 @@
 
 ## Developement
 
-- ##### IDE : VS CODE 1.36.1
+- **IDE : VS CODE 1.36.1**
 
-- ##### Language : Python 3.7.2
+- **Language : Python 3.7.2**
 
-- ##### Framework : Django 2.1.5
+- **Framework : Django 2.1.5**
 
-
+  
 
 ## Developors
 
-- ##### **[JeongEun Sin](https://github.com/SinJeongEun)** : *Front-end*
+- **[JeongEun Sin](https://github.com/SinJeongEun)** : ***Front-end***
 
-- ##### **[Dahye Yoon](https://github.com/Rahdduru)** : ***Front-end***
+- **[Dahye Yoon](https://github.com/Rahdduru)** : ***Front-end***
 
-- ##### **[MyeongSeok Kim](https://github.com/myeongs14)** : *Back-end*
+- **[MyeongSeok Kim](https://github.com/audtjr9514)** : ***Back-end***
 
 - **[YoungMin Jo](https://github.com/minizero0)** : ***Back-end***
 
@@ -54,9 +54,13 @@
 
 ## Development Step
 
-**1. source shev/Scripts/activate** 가상환경 작동
+  **1. source shev/Scripts/activate** 가상환경 작동
 
-**2. cd easy_volunteer** 프로젝트 폴더로 이동
+  **2. cd easy_volunteer** 프로젝트 폴더로 이동
 
-**3. python** **manage.py runserver** 서버 작동
+  **3. pip install django** 장고 설치
+
+  **4. pip install pillow** 동적 이미지를 위한 pillow  설치
+
+  **5. . python** **manage.py runserver** 서버 작동
 
