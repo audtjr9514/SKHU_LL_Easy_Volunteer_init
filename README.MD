@@ -30,13 +30,13 @@
 
 ## Flow Chart
 
-![home](https://github.com/audtjr9514/SKHU_LikeLion_Alumni_Ver_Django/blob/master/DB_Designing.JPG)
+![home](https://github.com/audtjr9514/SKHU_LL_Easy_Volunteer_init/blob/master/Flow_Chart.JPG)
 
 
 
 ## DataBase Designing
 
-![home](https://github.com/audtjr9514/SKHU_LikeLion_Alumni_Ver_Django/blob/master/DB_Designing.JPG)
+![home](https://github.com/audtjr9514/SKHU_LL_Easy_Volunteer_init/blob/master/DB_Designing.jpg)
 
 
 
