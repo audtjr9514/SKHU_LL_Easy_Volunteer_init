@@ -118,7 +118,7 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-AUTH_USER_MODEL = 'easyvolunteer.GeneralUser'
+AUTH_USER_MODEL = 'easyvolunteer.CUser'
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'alumni', 'static')
