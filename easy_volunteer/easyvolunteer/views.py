@@ -3,6 +3,8 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.http import HttpResponse
+from .models import CUser, Organ, Service, Area, Job, Product, Brand
+from .forms import UserForm, OrganForm, LoginForm
 
 # 맨 첫화면 _ 메인 페이지
 def main(request):
@@ -22,11 +24,42 @@ def organ_signup(request):
 
 # 일반 회원가입 페이지
 def user_signup(request):
-    return render(request, 'user_signup.html')
+    if request.method == "POST":
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = CUser.objects.create_User(email=form.cleaned_data["email"],
+                                                 password=form.cleaned_data["password"],
+                                                 username=form.cleaned_data["username"],
+                                                 codeNum=form.cleaned_data["codeNum"],
+                                                 phoneNum=form.cleaned_data["phoneNum"],
+                                                 job=form.cleaned_data["job"],
+                                                 license=form.cleaned_data["license"],
+                                                 area=form.cleaned_data["area"],
+                                                 another=form.cleaned_data["another"],
+                                                 image=form.cleaned_data["image"]
+                                                 )
+            login(request, new_user)
+            return redirect('main')
+    else:
+        form = UserForm()
+        return render(request, 'user_signup.html', {'form':form})
 
 # 로그인 페이지
 def login(request):
-    return render(request, 'login.html')
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        email = request.POST['email']
+        password = request.POST['password']
+        user = quthenticate(email = email, password = password)
+        if user is not None:
+            login(request, user)
+            return redirect('main')
+        else:
+            return HttpResponse('로그인 실패')
+    else:
+        form = LoginForm()
+        return render(request, 'login.html', {'form', form})
+
 
 # 일반 회원 마이페이지
 def mypage(request):

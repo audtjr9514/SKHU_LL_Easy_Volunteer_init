@@ -3,32 +3,32 @@ from django.contrib.auth.models import AbstractUser
 
 # 일반 유저
 class CUser(AbstractUser):
-    codeNum = models.IntegerField(blank=True, null=True, vervose_name="주민번호")                # 주민 번호
+    codeNum = models.IntegerField(blank=True, null=True, verbose_name="주민번호")                # 주민 번호
     phoneNum = models.IntegerField(
-        blank=True, null=True, vervose_name= "전화번호")               # 핸드폰 번호
+        blank=True, null=True, verbose_name= "전화번호")               # 핸드폰 번호
     # 직업
-    job = models.ForeignKey('Job', on_delete=models.CASCADE, related_name='user_job', blank=True, null=True, vervose_name="직업ㄴ")
+    job = models.ForeignKey('Job', on_delete=models.CASCADE, related_name='user_job', blank=True, null=True, verbose_name="직업ㄴ")
     license = models.CharField(
-        max_length=20, blank=True, null=True, vervose_name="자격증")    # 자격증
+        max_length=20, blank=True, null=True, verbose_name="자격증")    # 자격증
     # 레벨
     level = models.IntegerField(default=1)
     point = models.IntegerField(default=0)                              # 가지고 있는포인트
     area = models.ForeignKey('Area', on_delete=models.CASCADE,
-                             related_name='user_area', blank=True, null=True, vervose_name="지역")  # 지역
+                             related_name='user_area', blank=True, null=True, verbose_name="지역")  # 지역
     another = models.CharField(
-        max_length=100, blank=True, null=True, vervose_name="기타 특이사항")   # 비고
+        max_length=100, blank=True, null=True, verbose_name="기타 특이사항")   # 비고
     image = models.ImageField(
-        upload_to='images/', blank=True, null=True, vervose_name="사진")  # 이미지
-    is_organ = models.BooleanField(default=False, vervose_name="")                       # 일반 회원인지, 기관 회원인지 확인
+        upload_to='images/', blank=True, null=True, verbose_name="사진")  # 이미지
+    is_organ = models.BooleanField(default=False, verbose_name="")                       # 일반 회원인지, 기관 회원인지 확인
     organ = models.OneToOneField('Organ', on_delete=models.CASCADE, related_name='user_organ', blank=True, null=True)  # 기관에 대한 정보
     def __str(self):
         return self.username
 
 # 기관 유저에 대해 이어줄 테이블 
 class Organ(models.Model):
-    crew = models.CharField(max_length=20, vervose_name="소속")      # 소속
-    head = models.CharField(max_length=20, vervose_name="책임자명")      # 책임자명
-    url = models. CharField(max_length=500, vervose_name="URL")
+    crew = models.CharField(max_length=20, verbose_name="소속")                # 소속
+    ead = models.CharField(max_length=20, verbose_name="책임자명")             # 책임자명
+    url = models.CharField(max_length=500,default="", verbose_name="URL")     # 인터넷 주소
     def __str(self):
         return self.Cuser.username
 
