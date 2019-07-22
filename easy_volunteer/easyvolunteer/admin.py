@@ -4,7 +4,7 @@ from .models import User, Organ, Service, Area, Job, Product, Brand
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'name', 'last_login_at','is_organ')
+    list_display = ('id', 'name', 'email', 'last_login_at','is_organ')
     list_display_links = ('id', 'email')
     # 사용자 상세 정보에서 비밀번호 필드를 노출하지 않음
     exclude = ('password',)

@@ -119,7 +119,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 AUTH_USER_MODEL = 'easyvolunteer.User'
-
+LOGOUT_REDIRECT_URL = 'main'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'alumni', 'static')
 ]
