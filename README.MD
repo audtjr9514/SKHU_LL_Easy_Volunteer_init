@@ -48,7 +48,7 @@
 
 - ##### 앱폴더 명 : easyvolunteer
 
-- ##### **관리자 계정명** : admin_shev / shev12345
+- ##### **관리자 계정명** : E-Mail : shev@admin.com / PW : shev12345
 
 
 
@@ -62,7 +62,7 @@
 
   **4. pip install pillow** 동적 이미지를 위한 pillow  설치
 
-  **5. . python** **manage.py runserver** 서버 작동
+  **5. python** **manage.py runserver** 서버 작동
 
 
 
