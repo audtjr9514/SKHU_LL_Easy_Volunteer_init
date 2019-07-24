@@ -40,33 +40,21 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField('사용중', default=True)
     date_joined = models.DateTimeField('가입일', default=timezone.now)
     # 커스터마이징
-    codeNum = models.IntegerField(
-        blank=True, null=True, verbose_name="주민번호")                # 주민 번호
-    phoneNum = models.IntegerField(
-        blank=True, null=True, verbose_name="전화번호")               # 핸드폰 번호
-    # 직업
-    job = models.ForeignKey('Job', on_delete=models.CASCADE,
-                            related_name='user_job', blank=True, null=True, verbose_name="직업")
-    license = models.CharField(
-        max_length=20, blank=True, null=True, verbose_name="자격증")    # 자격증
-    # 레벨
-    level = models.IntegerField(default=1)
-    # 가지고 있는포인트
-    point = models.IntegerField(default=0)  
-    area = models.ForeignKey('Area', on_delete=models.CASCADE,
-                             related_name='user_area', blank=True, null=True, verbose_name="지역")  # 지역
-    another = models.CharField(
-        max_length=100, blank=True, null=True, verbose_name="기타 특이사항")   # 비고
-    image = models.ImageField(
-        upload_to='images/', blank=True, null=True, verbose_name="사진")  # 이미지
-    # 일반 회원인지, 기관 회원인지 확인
-    is_organ = models.BooleanField(default=False, verbose_name="기관 여부")
-    organ = models.OneToOneField('Organ', on_delete=models.CASCADE,
-                                 related_name='user_organ', blank=True, null=True)  # 기관에 대한 정보
+    codeNum = models.IntegerField(blank=True, null=True, verbose_name="주민번호")                # 주민 번호
+    phoneNum = models.IntegerField(blank=True, null=True, verbose_name="전화번호")               # 핸드폰 번호
+    job = models.ForeignKey('Job', on_delete=models.CASCADE, related_name='user_job', blank=True, null=True, verbose_name="직업")# 직업
+    license = models.CharField(max_length=20, blank=True, null=True, verbose_name="자격증")    # 자격증
+    level = models.IntegerField(default=1)  # 레벨
+    point = models.IntegerField(default=0)  # 가지고 있는포인트
+    area = models.ForeignKey('Area', on_delete=models.CASCADE, related_name='user_area', blank=True, null=True, verbose_name="지역")  # 지역
+    another = models.CharField(max_length=100, blank=True, null=True, verbose_name="기타 특이사항")   # 비고
+    image = models.ImageField(upload_to='images/', blank=True, null=True, verbose_name="사진")  # 이미지
+    is_organ = models.BooleanField(default=False, verbose_name="기관 여부") # 일반 회원인지, 기관 회원인지 확인
+    organ = models.OneToOneField('Organ', on_delete=models.CASCADE,related_name='user_organ', blank=True, null=True)  # 기관에 대한 정보
 
     objects = UserManager()
-    USERNAME_FIELD = 'email'                     # email을 사용자의 식별자로 설정
-    REQUIRED_FIELDS = ['name']                     # email을 사용자의 식별자로 설정
+    USERNAME_FIELD = 'email'    # email을 사용자의 식별자로 설정
+    REQUIRED_FIELDS = ['name']  # email을 사용자의 식별자로 설정
 
     class Meta:
         verbose_name = ('user')
@@ -80,7 +68,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 class Organ(models.Model):
     crew = models.CharField(max_length=20, verbose_name="소속")                # 소속
     head = models.CharField(max_length=20, verbose_name="책임자명")             # 책임자명
-    url = models.CharField(max_length=500,default="", verbose_name="URL")     # 인터넷 주소
+    url = models.CharField(max_length=500, default="", verbose_name="URL")     # 인터넷 주소
     def __str(self):
         return self.Cuser.username
 
@@ -114,7 +102,7 @@ class Job(models.Model):
 # 상품
 class Product(models.Model):
     name = models.CharField(max_length=30)  # 상품명
-    brand = models.ForeignKey('Brand', on_delete=models.CASCADE) # 상품의 브랜드
+    brand = models.ForeignKey('Brand', on_delete=models.CASCADE, related_name="products") # 상품의 브랜드
     point = models.IntegerField()           # 해당 상품의 포인트
     image = models.ImageField(upload_to='images/', blank=True)
     def __str__(self):

@@ -13,5 +13,5 @@ urlpatterns = [
     path('register', views.register, name='register'),               # 기관에서 봉사 등록 페이지
     path('quest', views.quest, name='quest'),                        # 일반 회원이 봉사 등록 페이지
     path('point', views.point, name='point'),                        # 일반 회원이 포인트 사용하는 페이지
-    path('', include('django.contrib.auth.urls')),                       # 일반 회원이 포인트 사용하는 페이지
+    path('', include('django.contrib.auth.urls')),                   # 로그아웃
 ]
